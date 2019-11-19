@@ -1,0 +1,37 @@
+官方： https://github.com/redisson/redisson
+
+// 1、创建配置对象
+Config config = new Config();
+// 也可以从配置文件中获取
+//Config config = Config.fromYAML(new File("config-file.yaml"));
+//config.useClusterServers().addNodeAddress("redis://192.168.153.130:7001");
+config.useSingleServer().setAddress("redis://192.168.153.130:6379");
+//注：地址必须是 redis:// 或 rediss://（用于SSL） 开头
+
+
+//2、创建redisson实例
+RedissonClient redisson = Redisson.create(config);  // Sync and Async API
+RedissonReactiveClient redissonReactive = Redisson.createReactive(config);  // Reactive API
+RedissonRxClient redissonRx = Redisson.createRx(config);  // RxJava2 API
+
+//3、Get Redis based Map
+RMap<Object, Object> map = redisson.getMap("myMap");
+RMapReactive<Object, Object> mapReactive = redissonReactive.getMap("myMap");
+RMapRx<Object, Object> mapRx = redissonRx.getMap("myMap");
+
+
+// 4. Get Redis based Lock / Get Redis based ExecutorService
+RLock lock = redisson.getLock("myLock");
+RLockReactive lockReactive = redissonReactive.getLock("myLock");
+RLockRx lockRx = redissonRx.getLock("myLock");
+
+RExecutorService executor = redisson.getExecutorService("myExecutorService");
+//超过30种不同的Redis based 和 services
+
+
+//加锁
+lock.lock();   //如果发生异常可能死锁
+lock.lock(5, TimeUnit.SECONDS);   //设置锁过期时间为5秒，防止死锁
+
+//释放锁
+lock.unlock();
