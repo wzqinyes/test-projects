@@ -10,6 +10,7 @@
     <modules>
         <module>httpclient-test</module>
         <module>redissontest</module>
+        <module>mytomcat</module>
     </modules>
 
 
