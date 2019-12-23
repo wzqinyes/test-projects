@@ -11,6 +11,8 @@
         <module>httpclient-test</module>
         <module>redissontest</module>
         <module>mytomcat</module>
+        <module>vertx</module>
+        <module>netty</module>
     </modules>
 
 
