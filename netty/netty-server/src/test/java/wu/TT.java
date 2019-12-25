@@ -2,6 +2,8 @@ package wu;
 
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TT {
 
@@ -12,7 +14,14 @@ public class TT {
         ServerSocket serverSocket = new ServerSocket(9909);//1
         //Socket clientSocket = serverSocket.accept();
 
+        Map<String, String> map = new HashMap<String, String>(){
+            {
+                put("a", "aa");
+                put("b", "bb");
+            }
+        };
 
+        System.out.println(map.get("a"));
 
     }
 }
