@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.mapper.TRqdjScanMapper">
+    
+    <resultMap id="ScanRequestDto" type="com.example.demo.bean.ScanRequestDto" >
+        <result property="infoId" column="info_id" jdbcType="INTEGER" />
+        <result property="station" column="station" jdbcType="VARCHAR" />
+        <result property="stationCode" column="station_code" jdbcType="VARCHAR" />
+    </resultMap>
+    
+    <select id="selectScanRequestDto" resultMap="ScanRequestDto" >
+        select info_id, station, station_code from t_rqdj_scan
+    </select>
+
+</mapper>

@@ -1,0 +1,50 @@
+logging:
+  level:
+    com.example.demo.mapper: debug
+    java:
+      sql:
+        Connection: info
+        Statement: info
+    org:
+      springframework:
+        web: info
+      apache: 
+        commons: 
+          httpclient: error
+    com.tencent.wll.rqdj.dao: debug
+
+spring:
+  application:
+    name: mybatis-plus
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-test-query: select 1
+      maximum-pool-size: 10
+      minimum-idle: 2
+    type: com.zaxxer.hikari.HikariDataSource
+    jdbcUrl: jdbc:mysql://192.168.18.4:3306/hnwyj1?useUnicode=true&characterEncoding=utf-8
+    username: hnwyj
+    password: hnwyj
+    url: jdbc:mysql://192.168.18.4:3306/hnwyj1?useUnicode=true&characterEncoding=utf-8
+  jackson:
+    default-property-inclusion: non_null
+
+mybatis-plus:
+  #configLocation: classpath:mybatis-config.xml   #采用xml配置文件的模式，或者下面的配置，两种方式是一样的
+  mapper-locations: classpath:/sqlmap/*Dao.xml,classpath:/sqlmap/*Mapper.xml
+  type-aliases-package: com.example.demo.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    #cache-enabled: false  #默认是true
+    lazy-loading-enabled: true
+    default-statement-timeout: 20000
+  global-config:
+    banner: false
+    db-config:
+      id-type: auto
+  configuration-properties:
+    dialect: mysql
+
+
+

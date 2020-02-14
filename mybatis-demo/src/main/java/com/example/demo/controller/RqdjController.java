@@ -1,0 +1,41 @@
+package com.example.demo.controller;
+
+import com.example.demo.bean.ScanRequestDto;
+import com.example.demo.entity.TRqdjScan;
+import com.example.demo.service.TRqdjScanService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+
+@RestController
+@RequestMapping("api/rqdj")
+public class RqdjController {
+
+    @Resource
+    private TRqdjScanService scanService;
+
+    @PostMapping("/scan")
+    public ResponseEntity<?> scan(@RequestBody ScanRequestDto requestDto) throws Exception {
+        TRqdjScan scan = new TRqdjScan();
+        scan.setInfoId(requestDto.getInfoId());
+        scan.setStation(requestDto.getStation());
+        scan.setStationCode(requestDto.getStationCode());
+        scan.setWorker("张三");
+        try {
+            scanService.insert(scan);
+        }catch (Exception e) {
+
+        }
+        System.out.println(scan.getId());
+        System.out.println(scan.getCreateTime());
+
+        return ResponseEntity.ok(scan);
+    }
+
+    @GetMapping("/scans")
+    public ResponseEntity<?> scan() throws Exception {
+        return ResponseEntity.ok(scanService.getScanRequestDto());
+    }
+
+}
