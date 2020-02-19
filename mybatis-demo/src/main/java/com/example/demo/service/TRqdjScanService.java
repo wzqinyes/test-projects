@@ -12,4 +12,7 @@ public interface TRqdjScanService {
 
     List<ScanRequestDto> getScanRequestDto();
 
+    List<ScanRequestDto> getScanRequestDto(Long infoId);
+
+    List<TRqdjScan> getTRqdjScanByInfoId(Long infoId);
 }

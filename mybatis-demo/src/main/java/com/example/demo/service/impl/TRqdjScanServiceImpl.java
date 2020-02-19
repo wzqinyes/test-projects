@@ -33,4 +33,15 @@ public class TRqdjScanServiceImpl extends ServiceImpl<TRqdjScanMapper, TRqdjScan
         return scanMapper.selectScanRequestDto();
     }
 
+    @Override
+    public List<ScanRequestDto> getScanRequestDto(Long infoId) {
+        return scanMapper.selectScanRequestDtoByInfoId(infoId);
+    }
+
+    @Override
+    public List<TRqdjScan> getTRqdjScanByInfoId(Long infoId) {
+        return scanMapper.selectByInfoId(infoId);
+    }
+
+
 }

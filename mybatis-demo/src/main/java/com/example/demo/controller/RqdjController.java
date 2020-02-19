@@ -34,8 +34,18 @@ public class RqdjController {
     }
 
     @GetMapping("/scans")
-    public ResponseEntity<?> scan() throws Exception {
+    public ResponseEntity<?> scans() throws Exception {
         return ResponseEntity.ok(scanService.getScanRequestDto());
+    }
+
+    @GetMapping("/scans/{infoId}")
+    public ResponseEntity<?> scans(@PathVariable("infoId") Long infoId) throws Exception {
+        return ResponseEntity.ok(scanService.getScanRequestDto(infoId));
+    }
+
+    @GetMapping("/scan/{infoId}")
+    public ResponseEntity<?> scan(@PathVariable("infoId") Long infoId) throws Exception {
+        return ResponseEntity.ok(scanService.getTRqdjScanByInfoId(infoId));
     }
 
 }
