@@ -16,6 +16,9 @@
         <module>mongodb</module>
         <module>mybatis-demo</module>
         <module>poi</module>
+        <module>dubbo-provider</module>
+        <module>dubbo-consumer</module>
+        <module>java-crypto</module>
     </modules>
 
 

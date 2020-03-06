@@ -1,0 +1,15 @@
+
+spring:
+  application.name: dubbo-consumer
+
+dubbo.service.version: 1.0.0
+dubbo:
+#  scan.base-packages: dubbo.service  #也可以用注解 @EnableDubbo(scanBasePackages = {"dubbo.service"})
+#  protocol:
+#    name: dubbo
+#    port: 12345
+#  registry.address: N/A  #zookeeper://192.168.142.128:2181
+#  provider:
+#    timeout: 3000
+  consumer:   #客户端配置
+    timeout: 5000
