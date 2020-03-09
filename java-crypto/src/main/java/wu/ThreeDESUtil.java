@@ -7,6 +7,7 @@ import javax.crypto.spec.IvParameterSpec;
 import java.security.Key;
 import java.util.Base64;
 
+//3DES
 public class ThreeDESUtil {
     // 算法名称
     public static final String KEY_ALGORITHM = "desede";
@@ -43,9 +44,9 @@ public class ThreeDESUtil {
      */
     private static Key keyGenerator(String keyStr) throws Exception {
         byte input[] = HexString2Bytes(keyStr);
-        DESedeKeySpec KeySpec = new DESedeKeySpec(input);
-        SecretKeyFactory KeyFactory = SecretKeyFactory.getInstance(KEY_ALGORITHM);
-        return ((Key) (KeyFactory.generateSecret(((java.security.spec.KeySpec) (KeySpec)))));
+        DESedeKeySpec keySpec = new DESedeKeySpec(input);
+        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(KEY_ALGORITHM);
+        return keyFactory.generateSecret(keySpec);
     }
 
     private static int parse(char c) {

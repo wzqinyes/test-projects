@@ -33,7 +33,7 @@ public class EncrypRSA {
 
         if (key != null) {
             // Cipher负责完成加密或解密工作，基于RSA
-            Cipher cipher = Cipher.getInstance(KEY_ALGORITHM);
+            Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
             // 根据公钥，对Cipher对象进行初始化
             cipher.init(Cipher.ENCRYPT_MODE, key);
 
@@ -57,7 +57,7 @@ public class EncrypRSA {
 
         if (key != null) {
             // Cipher负责完成加密或解密工作，基于RSA
-            Cipher cipher = Cipher.getInstance(KEY_ALGORITHM);
+            Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
             // 根据私钥，对Cipher对象进行初始化
             cipher.init(Cipher.DECRYPT_MODE, key);
             return cipher.doFinal(srcBytes);
