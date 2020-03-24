@@ -8,7 +8,7 @@ import java.security.Key;
 import java.util.Base64;
 
 //3DES
-public class ThreeDESUtil {
+public class DES3Util {
     // 算法名称
     public static final String KEY_ALGORITHM = "desede";
     // 算法名称/加密模式/填充方式
@@ -23,13 +23,13 @@ public class ThreeDESUtil {
      * @throws Exception
      */
     public static byte[] des3EncodeCBC(byte[] key, byte[] keyiv, byte[] data) throws Exception {
-        Key deskey = keyGenerator(new String(key));
+        Key deskey = genkey(new String(key));
         Cipher cipher = Cipher.getInstance(CIPHER_ALGORITHM);
         IvParameterSpec ips = new IvParameterSpec(keyiv);
         cipher.init(Cipher.ENCRYPT_MODE, deskey, ips);
         byte[] bOut = cipher.doFinal(data);
-        for (int k = 0; k < bOut.length; k++) {
-            System.out.print(bOut[k] + " ");
+        for (byte aBOut : bOut) {
+            System.out.print(aBOut + " ");
         }
         System.out.println("");
         return bOut;
@@ -42,7 +42,7 @@ public class ThreeDESUtil {
      * @return 密钥对象
      * @throws Exception
      */
-    private static Key keyGenerator(String keyStr) throws Exception {
+    private static Key genkey(String keyStr) throws Exception {
         byte input[] = HexString2Bytes(keyStr);
         DESedeKeySpec keySpec = new DESedeKeySpec(input);
         SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(KEY_ALGORITHM);
@@ -76,12 +76,11 @@ public class ThreeDESUtil {
      * @throws Exception
      */
     public static byte[] des3DecodeCBC(byte[] key, byte[] keyiv, byte[] data) throws Exception {
-        Key deskey = keyGenerator(new String(key));
+        Key deskey = genkey(new String(key));
         Cipher cipher = Cipher.getInstance(CIPHER_ALGORITHM);
         IvParameterSpec ips = new IvParameterSpec(keyiv);
         cipher.init(Cipher.DECRYPT_MODE, deskey, ips);
-        byte[] bOut = cipher.doFinal(data);
-        return bOut;
+        return cipher.doFinal(data);
     }
 
     public static void main(String[] args) throws Exception {

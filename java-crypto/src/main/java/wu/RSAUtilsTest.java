@@ -18,13 +18,15 @@ public class RSAUtilsTest {
     }
 
     public static void main(String[] args) throws Exception {
-        testSign();
-        System.out.println();
-        test1();
-        System.out.println();
-        test2();
-//        RSAUtils.genKeyPairToDist();
-        System.out.println();
+
+//        RSAUtils.genKeyPairToDist("000000");
+
+//        testSign();
+//        System.out.println();
+//        test1();
+//        System.out.println();
+//        test2();
+//        System.out.println();
         test3();
     }
 

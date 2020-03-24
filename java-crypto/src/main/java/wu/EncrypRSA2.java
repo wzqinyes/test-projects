@@ -12,6 +12,7 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.security.spec.RSAPrivateKeySpec;
 import java.security.spec.RSAPublicKeySpec;
+import java.util.Base64;
 
 public class EncrypRSA2 {
 
@@ -92,7 +93,7 @@ public class EncrypRSA2 {
         PublicKey publicKey = getRSAPublicKey(modulus, publicExponent);
 
         byte[] resultBytes = encrypt(publicKey, msg.getBytes());
-        System.out.println("加密后是:" + new String(resultBytes));
+        System.out.println("加密后是:" + new String(Base64.getEncoder().encode(resultBytes)));
 
         byte[] decBytes = decrypt(privateKey, resultBytes);
         System.out.println("解密后是:" + new String(decBytes));

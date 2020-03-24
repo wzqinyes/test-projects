@@ -64,16 +64,26 @@ public class RSAUtils {
     /**
      * 生成密钥对(公钥和私钥)
      *
+     * @param password 密码
      * @return
-     * @throws Exception
+     * @throws NoSuchAlgorithmException
      */
-    public static KeyPair genKeyPair() throws NoSuchAlgorithmException {
+    public static KeyPair genKeyPair(String password) throws NoSuchAlgorithmException {
         // KeyPairGenerator类用于生成公钥和私钥对，基于RSA算法生成对象
         KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance(KEY_ALGORITHM);
         // 初始化密钥对生成器，密钥大小为1024位
-        keyPairGen.initialize(1024, new SecureRandom());
+        if (password != null) {
+            keyPairGen.initialize(1024, new SecureRandom(password.getBytes()));
+        } else {
+            keyPairGen.initialize(1024);
+        }
+
         // 生成一个密钥对，保存在keyPair中
         return keyPairGen.generateKeyPair();
+    }
+
+    public static KeyPair genKeyPair() throws NoSuchAlgorithmException {
+        return genKeyPair(null);
     }
 
     /**
@@ -83,9 +93,9 @@ public class RSAUtils {
      * @return
      * @throws Exception
      */
-    public static void genKeyPairToDist()  {
+    public static void genKeyPairToDist(String password)  {
         try {
-            KeyPair keyPair = genKeyPair();
+            KeyPair keyPair = genKeyPair(password);
             PublicKey publicKey = keyPair.getPublic();       //得到公钥
             PrivateKey privateKey = keyPair.getPrivate();   //得到私钥
             //写到磁盘

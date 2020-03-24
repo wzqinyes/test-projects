@@ -111,6 +111,7 @@ public class EncrypRSA {
 
         System.out.println(System.getProperty("user.dir"));
         System.out.println(System.getProperty("user.home"));
+        System.out.println(System.getProperty("java.io.tmpdir"));
         System.out.println(File.separator);
 
     }
