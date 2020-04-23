@@ -1,6 +1,10 @@
 package com.example.mongodb.domain;
 
+import org.springframework.data.annotation.Id;
+
 public class UserTTT {
+
+    @Id
     private int id;
     private String name;
     private String sex;
@@ -28,5 +32,14 @@ public class UserTTT {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    @Override
+    public String toString() {
+        return "UserTTT{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", sex='" + sex + '\'' +
+            '}';
     }
 }

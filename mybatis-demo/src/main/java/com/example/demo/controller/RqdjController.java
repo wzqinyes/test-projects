@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("api/rqdj")
@@ -46,6 +47,11 @@ public class RqdjController {
     @GetMapping("/scan/{infoId}")
     public ResponseEntity<?> scan(@PathVariable("infoId") Long infoId) throws Exception {
         return ResponseEntity.ok(scanService.getTRqdjScanByInfoId(infoId));
+    }
+
+    @GetMapping("/testmp3/{id}")
+    public void testMp3(@PathVariable("id") String id, HttpServletResponse response) throws Exception {
+
     }
 
 }

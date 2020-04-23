@@ -25,7 +25,7 @@ public class TRqdjScanServiceImpl extends ServiceImpl<TRqdjScanMapper, TRqdjScan
         scanMapper.insert(rqdjScan);
         System.out.println(rqdjScan.getId());
         System.out.println(rqdjScan.getCreateTime());
-        throw new RuntimeException("事务测试！回滚。。。");
+        return rqdjScan;
     }
 
     @Override

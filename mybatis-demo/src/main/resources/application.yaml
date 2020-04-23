@@ -18,15 +18,15 @@ spring:
     name: mybatis-plus
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.1.57:3306/brain_msg?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: citybrain
+    type: com.zaxxer.hikari.HikariDataSource
     hikari:
       connection-test-query: select 1
       maximum-pool-size: 10
       minimum-idle: 2
-    type: com.zaxxer.hikari.HikariDataSource
-    jdbcUrl: jdbc:mysql://192.168.18.4:3306/hnwyj1?useUnicode=true&characterEncoding=utf-8
-    username: hnwyj
-    password: hnwyj
-    url: jdbc:mysql://192.168.18.4:3306/hnwyj1?useUnicode=true&characterEncoding=utf-8
+
   jackson:
     default-property-inclusion: non_null
 

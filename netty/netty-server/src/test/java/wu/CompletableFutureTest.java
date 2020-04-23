@@ -14,7 +14,7 @@ public class CompletableFutureTest {
         CompletableFuture<Void> future = CompletableFuture.allOf(f1, f2);
         future.thenAccept(v -> System.out.println("join end ..."));
 
-        future.join();  //阻塞
+        //future.join();  //阻塞
 
         System.out.println("end..........");
 
