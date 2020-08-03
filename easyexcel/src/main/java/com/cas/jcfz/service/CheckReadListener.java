@@ -127,7 +127,9 @@ public class CheckReadListener extends AnalysisEventListener<Map<Integer, Object
         String sheetName = sheetHolder.getSheetName();
         Integer total = sheetHolder.getApproximateTotalRowNumber();
         System.out.printf("工作表[%s] import data total = %s \n", sheetName, total);
-        columnConfigMap.forEach((index, columnConfig) -> System.out.printf("%s -> %s \n", index + 1, columnConfig.getFieldName()));
+        if (columnConfigMap != null) {
+            columnConfigMap.forEach((index, columnConfig) -> System.out.printf("%s -> %s \n", index + 1, columnConfig.getFieldName()));
+        }
         this.columnConfigMap = null;
         this.systemColumnConfigs = null;
         System.out.println();
